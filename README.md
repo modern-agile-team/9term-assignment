@@ -1,19 +1,12 @@
-# 9term-assignment
+# 프로그래머스 with 희민
 
-9기 과제저장소 입니다.
+# 디렉토리 구조
 
-# 기본 git 명령어
+9TERM-ASSIGNMENTS/
+└── day1/ 
+    ├── 파일1.js
+    └── 파일2.js
+└── day2/ 
+    ├── 파일1.js
+    └── 파일2.js
 
-`$ git branch -a` -> 어떤 branch 들이 있는지 확인
-
-`$ git fetch` -> git(원격환경)에서 branch를 만들었으니 vs코드(로컬환경)에도 적용시키겠다
-
-`$ git switch <전환할 branch이름>` -> 현재 branch에서 다른 branch로 넘어가겠다
-
-과제 올릴때는 자신의 branch에서
-
-`$ git add.`
-
-`$ git commit -m "과제설명제목"`
-
-`$ git push`
