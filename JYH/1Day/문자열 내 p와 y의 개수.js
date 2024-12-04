@@ -16,12 +16,8 @@ function solution(s){
             b++;
         }
     }
-    
-    if(a == b){
-        var answer = true;
-    }
-    else{
-        var answer = false;
-    }
+    let answer = a === b;
     return answer;
 }
+
+console.log(solution("PPpYy"))
