@@ -1,6 +1,4 @@
 function solution(s){
-    const lower = s.toLowerCase();
-
     let countP = 0;
     let countY = 0;
 
