@@ -15,7 +15,7 @@ function solution(array, commands) {
     let k = commands[i][2]; // k번째 수를 뽑기위하여 선언하였습니다.
     newArr = array.slice(start, end); //배열의 slice()함수를 이용하였습니다.
     newArr.sort((a, b) => a - b); // 자른 배열을 오름찰순으로 정리하였습니다.
-    answerArr.push(newArr[k - 1]); // newArr[k] 는 0-based index 이므로 1-based index로 변환하였습니다.
+    answerArr.push(newArr[k - 1]); // 초기화가 되지 않고 누적이 되도록, push()를 이용하였습니다.
   }
 
   return answerArr;
