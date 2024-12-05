@@ -3,7 +3,7 @@ function solution(s) {
     let yCount = 0; 
 
     for (let char of s) {
-        if (char == 'p' || char == 'P') { 
+        if (char == 'p') { 
             pCount++;
         } else if (char == 'y' || char == 'Y') { 
             yCount++;
