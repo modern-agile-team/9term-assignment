@@ -4,8 +4,8 @@ function solution(a, b) {
 
     let countAB = 0;
     
-    for(let i = min ; i <= max; i++){
-        countAB += i
+    for (let i = min ; i <= max; i++) {
+        countAB += i;
     }
     
     return countAB;
