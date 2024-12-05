@@ -5,7 +5,7 @@ function solution(numbers) {
             answer.push(numbers[i] + numbers[j]);
         }
     }
-    let set = new Set(answer);
-    set = [...set].sort((a, b) => a - b);
+    const set = new Set(answer);
+    arrayValue = [...set].sort((a, b) => a - b);
     return set
 }
