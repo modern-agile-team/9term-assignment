@@ -18,8 +18,8 @@ function solution(lottos, win_nums) {
             if (lottos[i] === win_nums[j]) wincount++;
         }
     }
-    let maxrank = getrank(wincount + zerocount);
-    let minrank = getrank(wincount);
+    const maxRank = getRank(wincount + zerocount);
+    const minRank = getRank(wincount);
     
     return [maxrank, minrank];
 }
