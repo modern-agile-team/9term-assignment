@@ -10,7 +10,7 @@ function solution(participant, completion) {
     }
     
     for (const person of participant) {
-        if (personCount[person] > 0){
+        if (personCount[person] > 0) {
             return person;
         }
     }
