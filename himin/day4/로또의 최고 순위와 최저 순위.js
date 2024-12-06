@@ -3,7 +3,7 @@ function solution(lottos, win_nums){
     const zeroCount = lottos.filter(num => num === 0).length;
     const matchCount = lottos.filter( num => win_nums.include(num) ).length;
 
-    const mixRank = rank[matchCount + zeroCount];
+    const maxRank = rank[matchCount + zeroCount];
     const minRank = rank[zeroCount];
 
     return [maxRank, minRank];
