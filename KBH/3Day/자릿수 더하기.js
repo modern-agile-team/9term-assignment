@@ -5,6 +5,5 @@ function solution(n)
     for (let i = 0; i < Num.length; i++){
         answer += Number(Num[i]);
     }
-
     return answer;
 }
