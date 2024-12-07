@@ -1,5 +1,5 @@
 function solution(participant, completion) {
-    var answer = '';
+    let answer = '';
     const sortParti = participant.sort();
     const sortComple = completion.sort();
     for(let i = 0; i < participant.length; i++){
