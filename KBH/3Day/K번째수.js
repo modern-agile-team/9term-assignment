@@ -6,7 +6,7 @@ function solution(array, commands) {
     const indexJ = commands[i][1];
     const indexK = commands[i][2];
 
-    const kNumber = array.slice(indexi-1, indexj).sort((a, b) => a-b).slice(indexk-1, indexk);
+    const kNumber = array.slice(indexI - 1, indexJ).sort((a, b) => a - b).slice(indexK-1, indexK);
         answer.push(kNumber[0]);
     }
 
