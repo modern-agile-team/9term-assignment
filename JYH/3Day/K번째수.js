@@ -6,8 +6,7 @@ function solution(array, commands) {
         start.sort(function(a, b) {
             return a - b;
         })
-        start[commands[i][2] - 1]
-        answer.push(start[commands[i][2] - 1])
+        answer.push(start[commands[i][2] - 1]) 
     }
     return answer;
 }

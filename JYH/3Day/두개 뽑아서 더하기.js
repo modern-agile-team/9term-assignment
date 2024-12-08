@@ -1,16 +1,11 @@
 function solution(numbers) {
-    let answer = [];
+    let sums = new Set();
     
     for (let i = 0; i < numbers.length; i++) {
         for (let j = i + 1; j < numbers.length; j++) {
             let sum = numbers[i] + numbers[j];
-            if (answer.indexOf(sum) === -1) {
-                answer.push(sum);
-            }
+            sums.add(sum)
         }
     }
-    answer.sort(function(a, b){
-        return a - b;
-    })
-    return answer;
+    return Array.from(sums).sort((a, b) => a - b);;
 }
