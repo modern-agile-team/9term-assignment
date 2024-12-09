@@ -12,12 +12,14 @@ function solution(absolutes, signs) {
     return answer;
 }
 // for문을 이용
-// const answer = [];
-// for (let i = 0; i < absolutes.length; i++) {
-//         if (signs[i] === true) {
-//             answer.push((+ absolutes[i]));
-//         } else {
-//             answer.push((- absolutes[i]));
-//         }
-//     }
-//     console.log(answer);
+// let answer = 0;
+    
+//     for (let i = 0; i < absolutes.length; i++) {
+//          if (signs[i] === true) {
+//              answer += absolutes[i];
+//          } else {
+//              answer -= absolutes[i];
+//          }
+//      }
+    
+//     return answer;
