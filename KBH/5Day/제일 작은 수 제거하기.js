@@ -1,6 +1,7 @@
 function solution(arr) {
     const minValue = Math.min(...arr);
     //최솟값을 구하기 위한 변수
+    
     const filteredArray = arr.filter((arr) => arr !== minValue); 
     //최솟값과 비교해 최솟값이 아니면 filteredArray에 넣음.
     
