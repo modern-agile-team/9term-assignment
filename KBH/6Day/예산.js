@@ -1,5 +1,5 @@
 function solution(d, budget) {
-    const sorted = [...d].sort((a, b) => a - b);
+    const sorted = d.toSorted((a, b) => a - b);
     
     let sum = 0;
 
