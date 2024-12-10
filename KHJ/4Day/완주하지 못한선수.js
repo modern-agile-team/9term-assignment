@@ -8,4 +8,4 @@ function solution(participant, completion) {
             return pa[i]
         }
         }
-}
+    }
