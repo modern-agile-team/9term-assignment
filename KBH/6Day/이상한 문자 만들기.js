@@ -1,14 +1,14 @@
 function solution(s) {
     let answer = [];
-    const arraySplit = s.split(" ");
+    const character = s.split(" ");
     
-    for (let i = 0; i < arraySplit.length; i++) {
+    for (let i = 0; i < character.length; i++) {
         let arrayPushed = [];
-        for (let j = 0; j < arraySplit[i].length; j++) {
+        for (let j = 0; j < character[i].length; j++) {
             if ((j % 2) === 0 || j === 0) {
-                arrayPushed.push(arraySplit[i][j].toUpperCase());
+                arrayPushed.push(character[i][j].toUpperCase());
             } else {
-                arrayPushed.push(arraySplit[i][j].toLowerCase());
+                arrayPushed.push(character[i][j].toLowerCase());
             }
         }
         
