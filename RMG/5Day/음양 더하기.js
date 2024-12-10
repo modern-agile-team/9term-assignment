@@ -17,9 +17,9 @@ function solution(absolutes, signs) { // for문을 이용한 방법
     let sum = 0;
     
     for (let i = 0; i < absolutes.length; i ++){
-        if (signs[i]){
+        if (signs[i]){ // sings이 음수일 떄
             sum += absolutes[i];
-        } else {
+        } else { //signs이 양수일ㄷ 때
             sum -= absolutes[i];
         }
     }
