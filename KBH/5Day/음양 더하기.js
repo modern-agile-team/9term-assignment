@@ -2,11 +2,11 @@ function solution(absolutes, signs) {
     // reduce를 이용
     const answer = absolutes.reduce(
         (sum, number, index) => {
-            if (signs[index] === false) {
+            if (!signs[index]) {
                 return sum - number;
-            } else{
+            } else {
                 return sum + number;
-        }
+            }
     }, 0);
     
     return answer;
