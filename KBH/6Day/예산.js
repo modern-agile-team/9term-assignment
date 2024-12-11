@@ -1,18 +1,19 @@
 function solution(d, budget) {
-    const sorted = d.toSorted((a, b) => a - b);
-    
+    const sortedArray = d.toSorted((a, b) => a - b);
     let sum = 0;
-
     let count = 0;
 
-    for(let i = 0; i < d.length; i++) {
-        sum += sorted[i];
+    for (let i = 0; i < d.length; i++) {
+        sum += sortedArray[i];
+
         if (sum > budget) {
+            
             break;
-        } else {
-            count++;
+        
         }
+
+        count++;
     }
-    console.log(sum, count)
+
     return count;
 }
