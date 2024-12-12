@@ -1,6 +1,6 @@
 function solution(n, lost, reserve) {
-    let actualLost = lost.filter(student => !reserve.includes(student));
-    let actualReserve = reserve.filter(student => !lost.includes(student));
+    const actualLost = lost.filter(student => !reserve.includes(student));
+    const actualReserve = reserve.filter(student => !lost.includes(student));
 
     actualLost.sort((a, b) => a - b);
     actualReserve.sort((a, b) => a - b);
