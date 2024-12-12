@@ -13,8 +13,8 @@ function solution(answers) {
 
     const maxScore = Math.max(...scores);
 
-    for (let i = 0; i < 3; i++){
-        if (maxScore === scores[i]){
+    for (let i = 0; i < 3; i++) {
+        if (maxScore === scores[i]) {
             equalScore.push(i + 1);
         }
     }
