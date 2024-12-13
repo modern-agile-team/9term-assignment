@@ -9,7 +9,9 @@ function solution(n, lost, reserve) {
     
     for (let i = 0; i < newLost.length; i++) {
         for (let j = 0; j < newReserve.length; j++) {
-            if (newLost[i] === newReserve[j] - 1 || newLost[i] === newReserve[j] + 1) { // 여분 체육복이 있는 번호의 앞, 뒷 번호 사람에게 빌려줌
+            
+            // 여분 체육복이 있는 번호의 앞, 뒷 번호 사람에게 빌려줌
+            if (newLost[i] === newReserve[j] - 1 || newLost[i] === newReserve[j] + 1) { 
                 count++;  // 체육복이 있는 사람 수
                 newReserve.splice(j, 1); // 체육복을 빌려준 학생 제거
                 break;
