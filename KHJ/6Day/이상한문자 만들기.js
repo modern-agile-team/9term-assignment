@@ -18,7 +18,6 @@ function solution(s) {
                 transformedWord += char; //알파벳이 아니면 그대로 transformeWorld에 추가
             }
         }
-        answer.push(transformedWord); 
     }
     return answer.join(' '); 
 }
