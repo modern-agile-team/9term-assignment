@@ -9,7 +9,7 @@ function solution(answers) {
 
     for (let i = 0; i < answers.length; i++) {
         for (let j = 0; j < patterns.length; j++) {
-            if (answers[i] === patterns[j][i % patterns[j].length]) {
+            if (answers[i] === patterns[j][i] % patterns[j].length) {
                 scores[j]++;
             }
         }

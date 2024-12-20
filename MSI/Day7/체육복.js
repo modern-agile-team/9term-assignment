@@ -21,5 +21,5 @@ function solution(n, lost, reserve) {
         }
     }
 
-    return students.filter(x => x > 0).length;
+    return students.filter(ele => ele > 0).length;
 }
