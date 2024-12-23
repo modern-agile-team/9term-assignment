@@ -4,7 +4,7 @@ function solution(new_id) {
         .replace(/[^a-z0-9._-]/g, '')
         .replace(/\.{2,}/g, '.')
         .replace(/^\.|\.$/g, '')
-    if(id === ''){
+    if(id === ''){ 
         id = 'a'
     }
     if(id.length >= 16){
