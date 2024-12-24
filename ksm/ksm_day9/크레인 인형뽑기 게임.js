@@ -1,5 +1,5 @@
 function solution(board, moves) {
-    let basket = []; // 뽑은 인형을 담는 바구니
+    const basket = []; // 뽑은 인형을 담는 바구니
     let countPop = 0; // 터진 인형의 개수를 저장할 변수
     
     for (let i = 0; i < moves.length; i++) { 
