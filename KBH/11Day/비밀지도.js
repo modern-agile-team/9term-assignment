@@ -1,6 +1,6 @@
 function solution(n, arr1, arr2) {
     
-    let array = [];
+    const array = [];
     const answer = [];
 
     for (let i = 0; i < n; i++) {
