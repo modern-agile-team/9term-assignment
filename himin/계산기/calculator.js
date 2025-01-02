@@ -28,10 +28,12 @@ function handleZeroDivision(expression) {
     return null; // 문제가 없으면 null 반환
 }
 
-// 계산 함수 (계산만 수행)
-function calculate(expression) {
+// 안전한 계산 함수
+function safeCalculate(expression) {
     try {
-        return eval(expression); // 수식 평가
+        // Function constructor를 사용하여 eval 대체
+        const result = new Function(`return (${expression})`)();
+        return result;
     } catch (error) {
         return "유효하지 않은 수식입니다.";
     }
@@ -39,8 +41,7 @@ function calculate(expression) {
 
 // 계산 처리 함수
 function handleCalculate() {
-    let input = getInputValue(); // 사용자가 입력한 값 가져오기
-    input = removeWhitespace(input); // 공백 제거
+    const input = getInputValue(); // 사용자가 입력한 값 가져오기
 
     // 유효성 검사
     if (!isValidExpression(input)) {
@@ -56,6 +57,6 @@ function handleCalculate() {
     }
 
     // 수식 계산
-    const result = calculate(input);
+    const result = safeCalculate(input);
     printResult(`결과: ${result}`);
 }
