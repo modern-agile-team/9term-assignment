@@ -8,9 +8,16 @@ function printResult(message) {
     document.getElementById("result").textContent = message;
 }
 
-// 계산 함수
+// 계산 함수 (사칙연산만 허용)
 function calculate(expression) {
     expression = expression.replace(/\s+/g, ""); // 공백 제거
+
+    // 사칙연산만 허용하는 정규식
+    const isValidExpression = /^[\d+\-*/().]+$/;
+    if (!isValidExpression.test(expression)) {
+        return "유효하지 않은 수식입니다. (사칙연산만 가능)";
+    }
+
     try {
         const result = eval(expression); // 수식 평가
         return result;
