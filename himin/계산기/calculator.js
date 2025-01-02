@@ -1,6 +1,7 @@
 // 입력값 가져오기
 function getInputValue() {
-    return document.getElementById("inputField").value.trim();
+    const rawInput = document.getElementById("inputField").value; // 입력값 가져오기
+    return removeWhitespace(rawInput);
 }
 
 // 출력값 설정
