@@ -4,10 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>계산기</title>
+    <style>
+    /* h1 태그에 파스텔톤 애니메이션 적용 */
+    h1 {
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        background: linear-gradient(to right, #FFD1DC, #FFECB3, #C8E6C9, #B3E5FC, #D1C4E9); /* 파스텔톤 색상 */
+        -webkit-background-clip: text; /* 글자에만 배경 적용 */
+        background-clip: text; /* 표준 속성 추가 */
+        -webkit-text-fill-color: transparent; /* 글자 색상 투명화 */
+        animation: pastelRainbow 6s infinite; /* 애니메이션 속도를 느리게 */
+        background-size: 200% auto; /* 애니메이션 배경 크기 */
+    }
+
+    /* 파스텔 애니메이션 정의 */
+    @keyframes pastelRainbow {
+        0% {
+            background-position: 0%;
+        }
+        100% {
+            background-position: 100%;
+        }
+    }
+
+    /* 기본 스타일 */
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+    }
+    </style>
 </head>
 <body>
     <div class="calculator">
-        <h1>계산기</h1>
+        <h1>희민이의 계산기</h1>
+        <h3>계산식을 입력해주십시오 (예시: 1+ 2 | 종료 : exit)</h3>
         <input type="text" id="inputField" placeholder="계산식을 입력하세요" />
         <button onclick="handleCalculate()">입력</button>
         <p id="result"></p>
