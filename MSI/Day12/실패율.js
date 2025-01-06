@@ -1,11 +1,11 @@
 function solution(N, stages) {
     const fail = [];
-    let num2 = stages.length;
+    let stateLength = stages.length;
 
     for (let i = 1; i <= N; i++) {
-        const num = stages.filter(v => v === i).length;
-        fail.push([i, num / num2]);
-        num2 -= num;
+        const currentStageCount = stages.filter(v => v === i).length;
+        fail.push([i, currentStageCount / stateLength]);
+        stateLength -= currentStageCount;
     }
 
     const answer = fail.sort((a, b) => b[1] - a[1]);

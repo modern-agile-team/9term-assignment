@@ -1,5 +1,4 @@
 function solution(dartResult) {
-    let score = 0;
     const answer = [];
     let temp = 0;
 
@@ -9,26 +8,36 @@ function solution(dartResult) {
                 temp = 10;
                 i++;
             } else {
-                temp = dartResult[i];
+                temp = parseInt(dartResult[i]);
             }
-        } else if (dartResult[i] === "S") {
-            answer.push(temp);
-        } else if (dartResult[i] === "D") {
-            answer.push(Math.pow(temp, 2));
-        } else if (dartResult[i] === "T") {
-            answer.push(Math.pow(temp, 3));
-        } else if (dartResult[i] === "#") {
-            answer[answer.length - 1] *= -1;
-        } else if (dartResult[i] === "*") {
-            answer[answer.length - 1] *= 2;
-            if (answer.length > 1) {
-                answer[answer.length - 2] *= 2;
+        } else {
+            switch (dartResult[i]) {
+                case "S":
+                    answer.push(temp);
+                    break;
+                case "D":
+                    answer.push(Math.pow(temp, 2));
+                    break;
+                case "T":
+                    answer.push(Math.pow(temp, 3));
+                    break;
+                case "#":
+                    answer[answer.length - 1] *= -1;
+                    break;
+                case "*":
+                    answer[answer.length - 1] *= 2;
+                    if (answer.length > 1) {
+                        answer[answer.length - 2] *= 2;
+                    }
+                    break;
             }
         }
     }
 
-    for (const a of answer) {
-        score += Number(a);
+    // 최종 점수 계산
+    let score = 0;
+    for (const val of answer) {
+        score += val;
     }
 
     return score;
