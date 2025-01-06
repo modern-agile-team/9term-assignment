@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+  <title>kwon Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+    input[type="text"] {
+      width: 300px;
+      height: 30px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>kweon Calculator</h1>
+  <p>계산식을 입력해주세요 (예: 1 + 2 * 3 / 4). 종료하려면 exit 입력.</p>
+  <input type="text" id="expression" placeholder="계산식을 입력하세요" />
+  <button onclick="performCalculation()">계산</button>
+  <div class="result" id="result">결과: </div>
+  <script src="연습 copy.js" defer></script>
+</body>
+</html>
