@@ -1,5 +1,6 @@
 // HTML 요소 선택
 const addButton = document.getElementById('add-button');
+const taskInput = document.getElementById('task-input'); // 인풋 필드 선택
 const todoList = document.getElementById('todo-list');
 
 // 서버에서 할 일 목록 가져오기
@@ -20,21 +21,29 @@ function addTodoToServer(task) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ task }),
   })
-    .then(fetchTodos) // 목록 갱신
+    .then(() => {
+      fetchTodos(); // 목록 갱신
+      taskInput.value = ''; // 입력 필드 초기화
+    })
     .catch(error => console.error('새로운 할 일을 추가하는 중 에러가 발생했습니다:', error));
 }
 
 // 새로운 할 일 추가
 function addTodo() {
-  fetch('/todos')
-    .then(response => response.json())
-    .then(data => {
-      const lastId = data.length > 0 ? data[data.length - 1].id : 0; // 마지막 ID 가져오기
-      const task = `할 일 ${lastId + 1}`; // 제목 생성
-      addTodoToServer(task); // 서버에 저장
-    })
-    .catch(error => console.error('데이터를 가져오는 중 에러가 발생했습니다:', error));
+  const task = taskInput.value.trim(); // 입력값 가져오기
+  if (task === '') {
+    alert('할 일을 입력하세요!'); // 입력값이 비어 있으면 경고
+    return;
+  }
+  addTodoToServer(task); // 서버에 저장
 }
+
+// 엔터 키 이벤트 추가
+taskInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') { // 엔터 키인지 확인
+    addTodo(); // 엔터 키를 누르면 addTodo 호출
+  }
+});
 
 // 서버에서 할 일 삭제
 function deleteTodoFromServer(id) {
@@ -118,7 +127,6 @@ function renderTodo(todo) {
 }
 
 function updateTodoStatusOnServer(id, completed) {
-  // task 값도 서버에 전달
   const task = document.querySelector(`#todo-${id} .todo-text`).textContent;
 
   fetch(`/todos/${id}`, {

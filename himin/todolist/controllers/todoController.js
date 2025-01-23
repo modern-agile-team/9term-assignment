@@ -21,18 +21,6 @@ exports.addTodo = (req, res) => {
   });
 };
 
-exports.updateTodo = (req, res) => {
-  const { id } = req.params;
-  const { task } = req.body;
-  todoModel.update(id, task, (err) => {
-    if (err) {
-      res.status(500).json({ error: '할 일을 수정하는 데 실패했습니다.' });
-    } else {
-      res.sendStatus(200);
-    }
-  });
-};
-
 exports.deleteTodo = (req, res) => {
   const { id } = req.params;
   todoModel.delete(id, (err) => {
@@ -48,19 +36,21 @@ exports.updateTodo = (req, res) => {
   const { id } = req.params;
   const { task, completed } = req.body;
 
-  // task 값이 없을 경우 기존 값을 유지하도록 설정
+  // 기존 값을 유지하기 위해 기존 데이터를 조회
   todoModel.findById(id, (err, existingTodo) => {
     if (err || !existingTodo) {
       return res.status(404).json({ error: '할 일을 찾을 수 없습니다.' });
     }
 
     const updatedTask = task || existingTodo.task; // 기존 task 유지
-    todoModel.update(id, updatedTask, completed, (err) => {
+    const updatedCompleted = completed !== undefined ? completed : existingTodo.completed; // 기존 completed 유지
+
+    todoModel.update(id, updatedTask, updatedCompleted, (err) => {
       if (err) {
         console.error('할 일을 수정하는 중 에러:', err);
-        res.status(500).json({ error: '할 일을 수정하는 데 실패했습니다.' });
+        res.status(500).json({ error: '할 일을 수정하는 중 에러가 발생했습니다.' });
       } else {
-        res.sendStatus(200); // 성공
+        res.sendStatus(200); // 성공 응답
       }
     });
   });
