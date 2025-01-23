@@ -10,7 +10,7 @@ function fetchTodos() {
       todoList.innerHTML = ''; // 기존 목록 초기화
       data.forEach(todo => renderTodo(todo));
     })
-    .catch(error => console.error('Error fetching todos:', error));
+    .catch(error => console.error('데이터를 가져오는 중 에러가 발생했습니다:', error));
 }
 
 // 서버에 새로운 할 일 추가
@@ -21,7 +21,7 @@ function addTodoToServer(task) {
     body: JSON.stringify({ task }),
   })
     .then(fetchTodos) // 목록 갱신
-    .catch(error => console.error('Error adding todo:', error));
+    .catch(error => console.error('새로운 할 일을 추가하는 중 에러가 발생했습니다:', error));
 }
 
 // 새로운 할 일 추가
@@ -33,7 +33,7 @@ function addTodo() {
       const task = `할 일 ${lastId + 1}`; // 제목 생성
       addTodoToServer(task); // 서버에 저장
     })
-    .catch(error => console.error('Error fetching todos:', error));
+    .catch(error => console.error('데이터를 가져오는 중 에러가 발생했습니다:', error));
 }
 
 // 서버에서 할 일 삭제
@@ -42,7 +42,7 @@ function deleteTodoFromServer(id) {
     .then(() => {
       document.getElementById(`todo-${id}`).remove(); // UI에서 제거
     })
-    .catch(error => console.error('Error deleting todo:', error));
+    .catch(error => console.error('할 일을 삭제하는 중 에러가 발생했습니다:', error));
 }
 
 // 서버에서 할 일 수정
@@ -76,7 +76,7 @@ function editTodoOnServer(id, listItem) {
         editInput.remove();
         completeButton.remove();
       })
-      .catch(error => console.error('Error updating todo:', error));
+      .catch(error => console.error('할 일을 수정하는 중 에러가 발생했습니다:', error));
   });
 
   listItem.insertBefore(editInput, todoText.nextSibling);
@@ -128,11 +128,11 @@ function updateTodoStatusOnServer(id, completed) {
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Failed to update todo status');
+        throw new Error('할 일 상태 업데이트 실패');
       }
-      console.log('Updated todo status successfully');
+      console.log('할 일 상태가 성공적으로 업데이트되었습니다.');
     })
-    .catch(error => console.error('Error updating todo status:', error));
+    .catch(error => console.error('할 일 상태 업데이트 중 에러가 발생했습니다:', error));
 }
 
 // 초기화

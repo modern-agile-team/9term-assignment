@@ -1,7 +1,7 @@
 {
   "name": "todo-list",
   "version": "1.0.0",
-  "description": "A simple To-Do List application",
+  "description": "투두리스트",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",

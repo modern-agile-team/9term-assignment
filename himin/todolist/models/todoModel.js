@@ -19,7 +19,7 @@ exports.create = (task, callback) => {
   db.query("INSERT INTO todos (task) VALUES (?)", [task], callback);
 };
 
-// 데이터 수정
+// 데이터 수정 (기존 메서드)
 exports.update = (id, task, callback) => {
   db.query("UPDATE todos SET task = ? WHERE id = ?", [task, id], callback);
 };
@@ -29,10 +29,10 @@ exports.delete = (id, callback) => {
   db.query("DELETE FROM todos WHERE id = ?", [id], callback);
 };
 
-// 데이터 수정
+// 데이터 수정 (완성도 포함)
 exports.update = (id, task, completed, callback) => {
   const query = 'UPDATE todos SET task = ?, completed = ? WHERE id = ?';
-  console.log('Executing query:', query, 'with values:', [task, completed, id]); // 쿼리 로그 추가
+  console.log('쿼리 실행:', query, '값:', [task, completed, id]); 
   db.query(query, [task, completed, id], callback);
 };
 
@@ -40,9 +40,14 @@ exports.update = (id, task, completed, callback) => {
 exports.findById = (id, callback) => {
   const query = 'SELECT * FROM todos WHERE id = ?';
   db.query(query, [id], (err, results) => {
-    if (err) return callback(err);
-    if (results.length === 0) return callback(new Error('Todo not found'));
+    if (err) {
+      console.error('할 일을 찾는 중 에러 발생:', err); // 에러 로그
+      return callback(err);
+    }
+    if (results.length === 0) {
+      console.error('할 일을 찾을 수 없습니다.'); // 에러 로그
+      return callback(new Error('할 일을 찾을 수 없습니다.'));
+    }
     callback(null, results[0]);
   });
 };
-
