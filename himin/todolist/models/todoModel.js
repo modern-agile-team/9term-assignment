@@ -34,7 +34,6 @@ export const update = (id, task, completed = null, callback) => {
 
   const values = completed !== null ? [task, completed, id] : [task, id];
 
-  console.log("쿼리 실행:", query, "값:", values);
   db.query(query, values, callback);
 };
 
