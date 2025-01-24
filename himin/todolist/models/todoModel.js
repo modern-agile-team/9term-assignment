@@ -1,5 +1,7 @@
-const mysql = require("mysql2");
-require("dotenv").config(); // .env 파일 로드
+import mysql from "mysql2"; // mysql2 모듈 가져오기
+import dotenv from "dotenv"; // dotenv 모듈 가져오기
+
+dotenv.config(); // .env 파일 로드
 
 // 데이터베이스 연결 설정
 const db = mysql.createConnection({
@@ -10,34 +12,34 @@ const db = mysql.createConnection({
 });
 
 // 데이터 가져오기
-exports.getAll = (callback) => {
+export const getAll = (callback) => {
   db.query("SELECT * FROM todos", callback);
 };
 
 // 데이터 추가
-exports.create = (task, callback) => {
+export const create = (task, callback) => {
   db.query("INSERT INTO todos (task) VALUES (?)", [task], callback);
 };
 
-// 데이터 수정 (기존 메서드)
-exports.update = (id, task, callback) => {
-  db.query("UPDATE todos SET task = ? WHERE id = ?", [task, id], callback);
-};
-
 // 데이터 삭제
-exports.delete = (id, callback) => {
+export const deleteTodo = (id, callback) => {
   db.query("DELETE FROM todos WHERE id = ?", [id], callback);
 };
 
 // 데이터 수정 (완성도 포함)
-exports.update = (id, task, completed, callback) => {
-  const query = 'UPDATE todos SET task = ?, completed = ? WHERE id = ?';
-  console.log('쿼리 실행:', query, '값:', [task, completed, id]); 
-  db.query(query, [task, completed, id], callback);
+export const update = (id, task, completed = null, callback) => {
+  const query = completed !== null
+    ? "UPDATE todos SET task = ?, completed = ? WHERE id = ?"
+    : "UPDATE todos SET task = ? WHERE id = ?";
+
+  const values = completed !== null ? [task, completed, id] : [task, id];
+
+  console.log("쿼리 실행:", query, "값:", values);
+  db.query(query, values, callback);
 };
 
 // 데이터 조회
-exports.findById = (id, callback) => {
+export const findById = (id, callback) => {
   const query = 'SELECT * FROM todos WHERE id = ?';
   db.query(query, [id], (err, results) => {
     if (err) {

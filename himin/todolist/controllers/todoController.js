@@ -1,6 +1,6 @@
-const todoModel = require('../models/todoModel');
+import * as todoModel from '../models/todoModel.js';
 
-exports.getAllTodos = (req, res) => {
+export const getAllTodos = (req, res) => {
   todoModel.getAll((err, todos) => {
     if (err) {
       res.status(500).json({ error: '할 일 목록을 가져오는 데 실패했습니다.' });
@@ -10,7 +10,7 @@ exports.getAllTodos = (req, res) => {
   });
 };
 
-exports.addTodo = (req, res) => {
+export const addTodo = (req, res) => {
   const { task } = req.body;
   todoModel.create(task, (err, result) => {
     if (err) {
@@ -21,9 +21,9 @@ exports.addTodo = (req, res) => {
   });
 };
 
-exports.deleteTodo = (req, res) => {
+export const deleteTodo = (req, res) => {
   const { id } = req.params;
-  todoModel.delete(id, (err) => {
+  todoModel.deleteTodo(id, (err) => {
     if (err) {
       res.status(500).json({ error: '할 일을 삭제하는 데 실패했습니다.' });
     } else {
@@ -32,7 +32,7 @@ exports.deleteTodo = (req, res) => {
   });
 };
 
-exports.updateTodo = (req, res) => {
+export const updateTodo = (req, res) => {
   const { id } = req.params;
   const { task, completed } = req.body;
 
