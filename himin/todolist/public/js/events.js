@@ -14,12 +14,14 @@ export const setupEventListeners = (addButton, taskInput, todoList) => {
     refreshTodoList(todoList); // 목록 갱신
   });
 
+  const ENTER_KEY = 'Enter'; // 엔터 키 상수
+
   // 엔터 키 이벤트
   taskInput.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
+    if (event.key === ENTER_KEY) {
       addButton.click(); // 클릭 이벤트 호출
     }
-  });
+  });  
 };
 
 // 할 일 목록 갱신
