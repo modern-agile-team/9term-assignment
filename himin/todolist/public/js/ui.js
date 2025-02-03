@@ -42,8 +42,7 @@ const createTodoText = (todo) => {
 const createEditButton = () => {
   const button = document.createElement('button');
   button.className = 'edit-button';
-  // innerHTML을 사용해서 아이콘을 삽입하는 것도 가독성이 좋지만,
-  // 이 예제에서는 createElement로 요소를 생성하는 방식을 유지합니다.
+  // createElement로 요소를 생성
   button.innerHTML = '<i class="fas fa-pencil-alt"></i>';
   return button;
 };
