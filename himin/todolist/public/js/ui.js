@@ -1,4 +1,4 @@
-import { updateTodoOnServer, deleteTodoFromServer } from './api.js';
+import { updateTodo, deleteTodo } from './api.js';
 
 export const renderTodo = (todo, todoList) => {
   const listItem = document.createElement('li');
@@ -15,14 +15,14 @@ export const renderTodo = (todo, todoList) => {
   // 체크박스 이벤트
   listItem.querySelector('.todo-checkbox').addEventListener('change', (e) => {
     const isCompleted = e.target.checked;
-    updateTodoOnServer(todo.id, todo.task, isCompleted).catch(console.error);
+    updateTodo(todo.id, todo.task, isCompleted).catch(console.error);
     const todoText = listItem.querySelector('.todo-text');
     todoText.style.textDecoration = isCompleted ? 'line-through' : 'none';
   });
 
   // 삭제 버튼 이벤트
   listItem.querySelector('.delete-button').addEventListener('click', () => {
-    deleteTodoFromServer(todo.id).then(() => listItem.remove()).catch(console.error);
+    deleteTodo(todo.id).then(() => listItem.remove()).catch(console.error);
   });
 
   // 수정 버튼 이벤트
@@ -49,7 +49,7 @@ export const renderTodo = (todo, todoList) => {
     editButton.addEventListener('click', () => {
       const updatedTask = inputField.value.trim();
       if (updatedTask) {
-        updateTodoOnServer(todo.id, updatedTask, todo.completed)
+        updateTodo(todo.id, updatedTask, todo.completed)
           .then(() => {
             // 수정된 내용을 다시 텍스트로 표시
             todo.task = updatedTask;
