@@ -5,7 +5,7 @@ const processList = require("../models/list");
 // 출력 관련 객체
 const output = {
   // 할 일 목록을 조회하고 렌더링하는 함수
-  listTdo: async (req, res) => {
+  listTodo: async (req, res) => {
     const newTodo = new processList(req.body);
     const getItems = await newTodo.listItems();
     // 'todo' 뷰를 렌더링하며, 조회된 항목들을 전달합니다

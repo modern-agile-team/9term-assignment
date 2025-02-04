@@ -33,22 +33,36 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+function fetchAPI(method, data = null) {
+  const url = "/todos";
+  const options = {
+    method: method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: data ? JSON.stringify(data) : null,
+  };
+
+  return fetch(url, options)
+    .then((res) => res.json())
+    .then((result) => {
+      if (result.success) {
+        return result;
+      } else {
+        throw new Error(result.message);
+      }
+    });
+}
+
 function createTodo(event) {
   event.preventDefault(); // 기본 폼 제출 방지
   const todo = document.querySelector(".todo-new-input");
 
   if (!todo.value) return alert("할 일을 입력해주세요");
 
-  const req = { todo: todo.value };
+  const body = { todo: todo.value };
 
-  fetch("/todos", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(req),
-  })
-    .then((res) => res.json())
+  fetchAPI("POST", body)
     .then((res) => {
       if (res.success) {
         location.href = "/";
@@ -60,14 +74,7 @@ function createTodo(event) {
 }
 
 function deleteTodo(id) {
-  fetch("/todos", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ id }), // ID를 JSON 형식으로 전송
-  })
-    .then((res) => res.json())
+  fetchAPI("DELETE", { id: id })
     .then((res) => {
       if (res.success) {
         location.reload();
@@ -101,28 +108,16 @@ function editTodo(editButton) {
 }
 
 function updateTodo(id, newText) {
-  const req = {
-    ListId: id,
+  const body = {
+    listId: id,
     editList: newText,
   };
 
-  fetch("/todos", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(req),
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      console.log("서버 응답:", res);
-      if (res.success) {
-        location.href = "/";
-      } else {
-        console.log("else");
-      }
+  fetchAPI("PUT", body)
+    .then(() => {
+      location.href = "/";
     })
-    .catch((error) => {
-      console.error("수정 중 오류 발생:", error);
+    .catch(() => {
+      alert("할 일 수정에 실패했습니다.");
     });
 }

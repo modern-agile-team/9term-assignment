@@ -10,7 +10,7 @@ const router = express.Router();
 const ctrl = require("../controllers/listController");
 
 // 이는 아마도 모든 할 일 항목을 나열하는 기능일 것입니다.
-router.get("/", ctrl.output.listTdo);
+router.get("/", ctrl.output.listTodo);
 
 // 할 일 항목을 삭제하는 기능입니다.
 router.delete("/todos", ctrl.process.delTodo);

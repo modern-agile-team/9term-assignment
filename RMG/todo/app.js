@@ -4,6 +4,9 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
+const dotenv = require("dotenv");
+dotenv.config();
+
 const router = require("./src/routes/todo");
 
 // Express 애플리케이션을 생성합니다.
