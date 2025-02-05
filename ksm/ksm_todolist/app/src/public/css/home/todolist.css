@@ -1,0 +1,170 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    min-height: 100vh;
+}
+
+h1 {
+    margin: 0;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+
+.todo-container {
+    max-width: 480px;
+    width: 100%;
+    background-color: #FFF8AD;
+    text-align: center;
+    padding: 20px;
+    margin: auto;
+    border-radius: 20px;
+}
+
+/* 입력창 스타일 */
+#todoInput {
+    width: calc(100% - 45px);
+    border: 0.5px solid #FFF8AD;
+    box-shadow:  0px 4px 0px rgba(242,236,165,1);
+    background-color: #FFF8AD;
+   
+    padding: 10px;
+}
+
+
+#todoInput:focus {
+    outline: none;
+}
+
+/* 추가 버튼 스타일 */
+#addBtn {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background-color: #FFF8AD;
+    border-radius: 4px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* 추가 버튼 모양 스타일 */
+#addBtn span {
+    display: block;
+    width: 4px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#addBtn span:last-child {
+    transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+/* 할 일 목록 스타일 */
+#todoList {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    font-size: 15px;
+    text-align: left;  
+}
+
+#todoList li {
+    user-select: none;
+    padding: 10px 0; 
+}
+
+/* 할 일 마우스 호버 시 배경 색 변경 */
+#todoList li:hover {
+    background-color: #f2eca5;
+}
+
+/* 삭제, 수정 버튼 스타일 */
+#todoList button {
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    background-color: #fff;
+    margin-right: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* 체크박스 스타일 */
+input[type="checkbox"]{
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin-right: 8px;
+}
+
+
+/* 완료된 할 일에 줄 긋기 및 색상 변경 */
+#todoList li.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* 삭제 버튼 스타일 */
+#todoList button.delete-btn {
+    background: url('/css/emoji/trash-solid.svg') no-repeat center center;
+    background-size: 16px 16px; /* 아이콘 크기 조정 */
+    border: none;
+    width: 24px; /* 버튼 크기 */
+    height: 24px;
+    float: right;
+    vertical-align: -6px;
+    cursor: pointer;
+}
+
+/* 수정 버튼 스타일 */
+#todoList button.modify-btn {
+    background: url('/css/emoji/pencil-solid.svg') no-repeat center center;
+    background-size: 16px 16px; /* 아이콘 크기 조정 */
+    border: none;
+    width: 24px; /* 버튼 크기 */
+    height: 24px;
+    float: right;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* 호버 시 수정, 삭제 버튼 확대 */
+.scale-up {
+    transform: scale(1.2);
+}
+
+/* 수정 완료 버튼 스타일 */
+#todoList button.finish-btn {
+    background: none;
+    border: none;
+    width: 30px; /* 버튼 크기 */
+    height: 24px;
+    float: right;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0; /* 기본 여백 제거 */
+}
+
+
+
+
+
+
+
+
+
